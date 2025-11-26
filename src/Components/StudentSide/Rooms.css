@@ -1,0 +1,232 @@
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 16px 50px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #0a66c2;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links .active {
+  color: #0a66c2;
+}
+
+.navbar-profile .profile-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+/* ===== Page Layout ===== */
+.rooms-container {
+  padding: 40px 60px;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+.rooms-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.rooms-subtitle {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* ===== Search Bar ===== */
+.search-bar {
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* ===== Rooms Grid ===== */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* ===== Room Card ===== */
+/* ===== Enhanced Room Card ===== */
+
+.room-card {
+  background: linear-gradient(180deg, #ffffff 0%, #fafbff 100%);
+  border-radius: 18px;
+  border: 1px solid rgba(230, 233, 240, 0.9);
+  padding-bottom: 14px;
+  
+  /* Soft shadows */
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 6px 14px rgba(0, 0, 0, 0.06);
+
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  
+  position: relative;
+  overflow: hidden;
+
+  /* subtle upscale animation */
+  transform-origin: center;
+}
+
+/* Hover state — premium lift */
+.room-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.10),
+    0 4px 10px rgba(0, 0, 0, 0.06);
+  border-color: rgba(180, 190, 210, 0.9);
+}
+
+/* Top divider decorating the card (modern SaaS aesthetic) */
+.room-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+
+  background: linear-gradient(90deg, #0a66c2, #4f9cff);
+
+  opacity: 0.85;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+/* Image area improvement */
+.room-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+/* Card content */
+.room-info {
+  padding: 20px;
+}
+
+.room-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.room-description {
+  color: #4b5563;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  line-height: 1.45;
+}
+
+/* Modern join button */
+.join-button {
+  background: #0a66c2;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.join-button:hover {
+  background: #004182;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(10, 102, 194, 0.25);
+}
+
+
+.empty-state {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.85;
+}
+
+.empty-icon {
+  width: 120px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.empty-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .rooms-container {
+    padding: 20px;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+}
