@@ -229,4 +229,7 @@
   .recharts-legend-item-text {
     font-size: 6px !important;
   }
+  .recharts-pie-labels{
+    font-size: 10px !important;
+  }
 }

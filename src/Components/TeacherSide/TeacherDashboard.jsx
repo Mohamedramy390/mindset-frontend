@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getUserRooms } from "../../api/apis";
 import Loader from "../Loader/Loader";
 import roomPlaceholder from "../Assets/room-placeholder.png";
+import { Navbar } from "../../nav/Navbar";
 
 
 function TeacherDashboard() {
@@ -38,20 +39,7 @@ function TeacherDashboard() {
   if (!loading && rooms.length === 0) {
     return (
       <div className="teacher-dashboard">
-        <nav className="teacher-navbar">
-          <div className="teacher-navbar-left">
-            <h2>Teacher Dashboard</h2>
-          </div>
-          <div className="teacher-menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            ☰
-          </div>
-          <div className={`teacher-navbar-right ${isMenuOpen ? "open" : ""}`}>
-            <button className="teacher-logout-btn">
-              <Link to="/Login">Logout</Link>
-            </button>
-          </div>
-        </nav>
-
+        <Navbar role="Teacher" />
         <div className="teacher-content">
           <div className="teacher-header">
             <h3>My Rooms</h3>
@@ -86,17 +74,7 @@ function TeacherDashboard() {
   return (
     <div className="teacher-dashboard">
       {/* Sticky Navbar */}
-      <nav className="teacher-navbar">
-        <div className="teacher-navbar-left">
-          <h2>Teacher Dashboard</h2>
-        </div>
-        <div className="teacher-menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          ☰
-        </div>
-        <div className={`teacher-navbar-right ${isMenuOpen ? "open" : ""}`}>
-          <button className="teacher-logout-btn"><Link to="/Login">Logout</Link></button>
-        </div>
-      </nav>
+      <Navbar role="Teacher" />
 
       {/* Content */}
       <div className="teacher-content">

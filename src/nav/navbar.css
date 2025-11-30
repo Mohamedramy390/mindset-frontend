@@ -1,3 +1,4 @@
+/* --- Base Desktop Styles --- */
 .room-navbar {
   display: flex;
   justify-content: space-between;
@@ -6,58 +7,38 @@
   border-bottom: 1px solid #e5e7eb;
   padding: 16px 48px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative; /* Needed for mobile menu positioning */
+  z-index: 100;
 }
 
 .room-logo {
   font-size: 24px;
   font-weight: 700;
   color: #2563eb;
+  margin: 0;
 }
 
-.room-menu a {
-  margin: 0 16px;
-  text-decoration: none;
-  font-weight: 500;
-  color: #444;
-  transition: color 0.2s;
-}
-
-.room-menu a:hover {
-  color: #2563eb;
-}
-
-.room-navbar {
+.room-menu {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 16px 48px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.room-logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: #2563eb;
+  gap: 20px;
 }
 
 .room-menu a {
-  margin: 0 16px;
   text-decoration: none;
   font-weight: 500;
   color: #444;
   transition: color 0.2s;
+  font-size: 16px;
 }
 
 .room-menu a:hover {
   color: #2563eb;
 }
 
-.room-menu a.active {
-  color: #2563eb;
-  border-bottom: 2px solid #2563eb;
-  padding-bottom: 3px;
+/* Specific style for logout if you want it to look different */
+.logout-btn {
+    color: #ef4444 !important; /* Red color for logout */
 }
 
 .room-avatar {
@@ -65,27 +46,74 @@
   height: 40px;
   background: #ccc;
   border-radius: 50%;
+  flex-shrink: 0; /* Prevents shrinking on small screens */
 }
 
+/* --- Hamburger Icon (Hidden on Desktop) --- */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  background-color: #333;
+}
+
+/* --- Mobile Styles --- */
 @media (max-width: 768px) {
   .room-navbar {
-    flex-direction: column;
     padding: 16px 24px;
-    gap: 16px;
   }
 
+  /* Show Hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* Hide Avatar on mobile if you want, or keep it. 
+     Here I keep it but ensure order is correct */
+  
   .room-menu {
-    display: flex;
+    position: absolute;
+    top: 100%; /* Push it exactly below the header */
+    left: 0;
+    width: 100%;
+    background-color: white;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    width: 100%;
+    padding: 20px 0;
+    gap: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    
+    /* Animation logic */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    pointer-events: none; /* Can't click when hidden */
   }
 
-  .room-menu a {
-    margin: 0;
-    width: 100%;
-    text-align: center;
-    padding: 8px 0;
+  /* When the 'active' class is added via React state */
+  .room-menu.active {
+    max-height: 300px; /* Large enough to fit content */
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Hamburger Animation (Optional: Turns into X) */
+  .hamburger .bar.active:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger .bar.active:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger .bar.active:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 }

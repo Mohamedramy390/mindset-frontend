@@ -9,8 +9,8 @@ export const RoomsProvider = ({ children }) => {
   const [rooms, setRooms] = useState([]);
   const [enrolledRooms, setEnrolledRooms] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { user, loading: authLoading } = useAuth();
   const [error, setError] = useState("");
-  const user = useAuth()
 
   const fetchRooms = async () => {
     try {
@@ -31,7 +31,12 @@ export const RoomsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-
+    if (authLoading) return; 
+    if (!user) {
+        setRooms([]);
+        setEnrolledRooms([]);
+        return; 
+    }
     fetchRooms();
 
   }, [user]);
