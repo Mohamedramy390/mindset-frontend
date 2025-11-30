@@ -1,4 +1,4 @@
-import { Route, Routes, Link} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import './App.css';
 import Signup from './Components/LoginSignup/Signup';
 import Login from './Components/LoginSignup/Login';
@@ -8,7 +8,6 @@ import Rooms from "./Components/StudentSide/Rooms";
 import StudentRoom from "./Components/StudentSide/StudentRoom";
 import MyRooms from "./Components/MyRooms";
 import { TeacherRoom } from "./Components/TeacherSide/TeacherRoom";
-import Loader from "./Components/Loader/Loader";
 
 function App() {
   return (

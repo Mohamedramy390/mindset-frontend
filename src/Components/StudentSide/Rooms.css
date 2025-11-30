@@ -80,20 +80,23 @@
 
 /* ===== Rooms Grid ===== */
 .rooms-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  padding-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
   gap: 25px;
 }
 
-/* ===== Room Card ===== */
 /* ===== Enhanced Room Card ===== */
 
 .room-card {
-  background: linear-gradient(180deg, #ffffff 0%, #fafbff 100%);
-  border-radius: 18px;
+  background: #ffffff;
+  border-radius: 12px;
   border: 1px solid rgba(230, 233, 240, 0.9);
-  padding-bottom: 14px;
-  
+  padding: 0;
+  overflow: hidden;
+  width: 320px;
+  flex-shrink: 0;
+
   /* Soft shadows */
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.03),
@@ -103,9 +106,8 @@
     transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.25s ease,
     border-color 0.25s ease;
-  
+
   position: relative;
-  overflow: hidden;
 
   /* subtle upscale animation */
   transform-origin: center;
@@ -120,29 +122,12 @@
   border-color: rgba(180, 190, 210, 0.9);
 }
 
-/* Top divider decorating the card (modern SaaS aesthetic) */
-.room-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-
-  background: linear-gradient(90deg, #0a66c2, #4f9cff);
-
-  opacity: 0.85;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-}
-
 /* Image area improvement */
 .room-image {
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
+  display: block;
 }
 
 /* Card content */

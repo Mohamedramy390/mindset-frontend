@@ -21,33 +21,30 @@ export const TeacherRoom = () => {
   const [loading, setLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const fetchRooms = async () => {
-    try {
-      setLoading(true);
-      const roomData = await getRoomById(id);
-      const topicsArray = Object.entries(roomData.data.room.topicQuestionCount);
-      setTopics(topicsArray);
-    } catch (err) {
-      console.error("Failed to load room", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        setLoading(true);
+        const roomData = await getRoomById(id);
+        const topicsArray = Object.entries(roomData.data.room.topicQuestionCount);
+        setTopics(topicsArray);
+      } catch (err) {
+        console.error("Failed to load room", err);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchRooms();
-  }, [id]); // Add 'id' as a dependency
+  }, [id]);
 
   const handleDelete = async () => {
-    
     try {
       setIsDeleting(true);
       await deleteRoom(id);
       alert("Room deleted successfully.");
       // Navigate back to the rooms list (you can change this path)
       navigate("/my-rooms");
-    } catch (err)
-    {
+    } catch (err) {
       console.error("Failed to delete room", err);
       alert("Failed to delete room. Please try again.");
     } finally {
@@ -82,7 +79,7 @@ export const TeacherRoom = () => {
     name,
     value: Number(value),
   }));
-  
+
   // Calculate total questions to check for empty state
   const totalQuestions = pieChartData.reduce((acc, entry) => acc + entry.value, 0);
 
@@ -111,12 +108,12 @@ export const TeacherRoom = () => {
 
         <div className="chart-card">
           <h2 className="section-title">Question Distribution by Topic</h2>
-          
+
           {/* Check if we have data. If not, show a message. */}
           {totalQuestions > 0 ? (
             <div className="pie-chart-container">
-              {/* Use 'aspect' for responsiveness instead of fixed 'height' */}
-              <ResponsiveContainer width="100%" aspect={2}>
+              {/* Use height="100%" to let CSS control the height */}
+              <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={pieChartData}

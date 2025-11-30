@@ -8,30 +8,30 @@ const CreateRoom = () => {
   const [topic, setTopic] = useState('');
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [, setError] = useState('')
   const navigate = useNavigate()
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
-  const handleSubmit = async (e) => { 
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('')
     setLoading(true)
     try {
-        const formData = new FormData();
-        formData.append("name", roomName);
-        formData.append("topic", topic);
-        formData.append("file", file);
-        const newRoom = await createRoom(formData);
-        navigate('/my-rooms')
+      const formData = new FormData();
+      formData.append("name", roomName);
+      formData.append("topic", topic);
+      formData.append("file", file);
+      const newRoom = await createRoom(formData);
+      navigate('/my-rooms')
 
-        console.log(newRoom)
+      console.log(newRoom)
     } catch (err) {
-        const message = err?.response?.data?.message || err?.message || 'Create failed'
-        setError(message)
+      const message = err?.response?.data?.message || err?.message || 'Create failed'
+      setError(message)
     } finally {
-        setLoading(false)
+      setLoading(false)
     }
   }
 
@@ -81,7 +81,7 @@ const CreateRoom = () => {
           </div>
 
           <button type="submit" disabled={loading} className="create-room-btn">
-            {loading ? 'Creating The Room ...':'Create Room'}
+            {loading ? 'Creating The Room ...' : 'Create Room'}
           </button>
           <button onClick={() => navigate('/my-rooms')} disabled={loading} className="create-room-btn">
             Cancel

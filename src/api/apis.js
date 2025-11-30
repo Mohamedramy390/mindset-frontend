@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
 
 // Configure axios base URL to match AuthContext
 axios.defaults.baseURL = 'https://mindset-backend-production.up.railway.app/api';

@@ -116,6 +116,7 @@ form input[type="text"]:focus {
 .create-room-btn:hover {
   background-color: #0078c7;
 }
+
 .create-room-btn:disabled {
   cursor: not-allowed;
   opacity: 0.6;
@@ -138,5 +139,16 @@ form input[type="text"]:focus {
 
   .upload-box {
     padding: 20px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .create-room-container {
+    padding: 10px;
+  }
+
+  .create-room-card {
+    padding: 20px 15px;
+    max-width: 100%;
   }
 }

@@ -1,4 +1,4 @@
-import { createContext, use, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { getAllRooms, getUserRooms, enrollRoom } from "../api/apis";
 import { useAuth } from "./AuthContext";
 
@@ -31,9 +31,9 @@ export const RoomsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    
-      fetchRooms();
-    
+
+    fetchRooms();
+
   }, [user]);
 
   // When the user joins a room

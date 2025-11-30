@@ -12,13 +12,17 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 32px;
-  flex-wrap: wrap; /* Allows button to wrap on small screens */
-  gap: 16px; /* Adds space if it wraps */
+  flex-wrap: wrap;
+  /* Allows button to wrap on small screens */
+  gap: 16px;
+  /* Adds space if it wraps */
 }
 
 .delete-room-btn {
-  background-color: #fee2e2; /* Light red background */
-  color: #b91c1c; /* Dark red text */
+  background-color: #fee2e2;
+  /* Light red background */
+  color: #b91c1c;
+  /* Dark red text */
   font-weight: 600;
   padding: 10px 16px;
   border: none;
@@ -26,15 +30,18 @@
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s ease;
-  white-space: nowrap; /* Prevents text from wrapping */
+  white-space: nowrap;
+  /* Prevents text from wrapping */
 }
 
 .delete-room-btn:hover {
-  background-color: #fecaca; /* Lighter red on hover */
+  background-color: #fecaca;
+  /* Lighter red on hover */
 }
 
 .delete-room-btn:disabled {
-  background-color: #f3f4f6; /* Gray when disabled */
+  background-color: #f3f4f6;
+  /* Gray when disabled */
   color: #9ca3af;
   cursor: not-allowed;
 }
@@ -78,7 +85,7 @@
 /* Pie Chart Container */
 .pie-chart-container {
   width: 100%;
-  /* Height is controlled by 'aspect' in the React component */
+  height: 400px;
 }
 
 /* Empty Chart Message */
@@ -97,13 +104,15 @@
 
 /* Table Section */
 .table-card {
-  overflow-x: auto; /* Enables horizontal scroll for small screens */
+  overflow-x: auto;
+  /* Enables horizontal scroll for small screens */
 }
 
 .topics-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px; /* Ensures columns don’t squeeze too much */
+  min-width: 600px;
+  /* Ensures columns don't squeeze too much */
 }
 
 .topics-table th {
@@ -156,7 +165,8 @@
 @media (max-width: 600px) {
   .teacher-room-header {
     flex-direction: column;
-    align-items: stretch; /* Make items full-width */
+    align-items: stretch;
+    /* Make items full-width */
   }
 
   .delete-room-btn {
@@ -175,7 +185,8 @@
   .subtitle {
     text-align: center;
     font-size: 14px;
-    margin-bottom: 24px; /* Adjusted margin for mobile */
+    margin-bottom: 24px;
+    /* Adjusted margin for mobile */
   }
 
   .chart-card,
@@ -197,5 +208,25 @@
   .empty-chart-message {
     height: 150px;
     font-size: 14px;
+  }
+
+  .pie-chart-container {
+    height: 300px;
+  }
+
+  /* Reduce legend size on mobile */
+  .recharts-default-legend {
+    font-size: 11px !important;
+    margin-top: 0px !important;
+  }
+
+  .recharts-legend-item {
+    margin-right: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .recharts-legend-item-text {
+    font-size: 11px !important;
   }
 }
