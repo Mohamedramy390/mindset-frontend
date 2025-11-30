@@ -1,12 +1,29 @@
 import axios from 'axios';
 
-// Configure axios base URL to match AuthContext
-axios.defaults.baseURL = 'https://mindset-backend-production.up.railway.app/api';
+// 1. Configure the base URL
+const api = axios.create({
+  baseURL: 'https://mindset-backend-production.up.railway.app/api',
+});
+
+// 2. ADD THIS: Automatically add the token to every request
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
+});
+
+// ---------------------------------------------------------
+// Now your functions become much cleaner (no manual headers needed!)
+// ---------------------------------------------------------
 
 // Get all rooms
 export const getAllRooms = async () => {
   try {
-    const response = await axios.get('/rooms');
+    const response = await api.get('/rooms'); // Use 'api' instead of 'axios'
     return response.data;
   } catch (error) {
     console.error('Error fetching rooms:', error);
@@ -14,10 +31,11 @@ export const getAllRooms = async () => {
   }
 };
 
-// Get room by ID
+// Get room by ID (This will now work!)
 export const getRoomById = async (roomId) => {
   try {
-    const response = await axios.get(`/rooms/${roomId}`);
+    // The interceptor automatically adds the Authorization header here now
+    const response = await api.get(`/rooms/${roomId}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching room:', error);
@@ -28,7 +46,7 @@ export const getRoomById = async (roomId) => {
 // Update room
 export const updateRoom = async (roomId, roomData) => {
   try {
-    const response = await axios.put(`/rooms/${roomId}`, roomData);
+    const response = await api.put(`/rooms/${roomId}`, roomData);
     return response.data;
   } catch (error) {
     console.error('Error updating room:', error);
@@ -36,16 +54,11 @@ export const updateRoom = async (roomId, roomData) => {
   }
 };
 
-
 // Enroll in a room
 export const enrollRoom = async (roomId) => {
   try {
-    const token = localStorage.getItem('token');
-    const response = await axios.post(
-      `/rooms/${roomId}/enroll`,
-      {},
-      token ? { headers: { Authorization: `Bearer ${token}` } } : undefined
-    );
+    // You don't need to manually get token anymore
+    const response = await api.post(`/rooms/${roomId}/enroll`, {});
     return response.data;
   } catch (error) {
     console.error('Error enrolling in room:', error);
@@ -54,19 +67,10 @@ export const enrollRoom = async (roomId) => {
 };
 
 // Get current user's rooms
-// apis.js
-
 export const getUserRooms = async () => {
   try {
-    const token = localStorage.getItem("token");
-
-    const res = await axios.get("/myrooms", {
-      headers: {
-        Authorization: `Bearer ${token}`, // 👈 make sure your backend middleware verifies JWT
-      },
-    });
-
-    return res.data.data.rooms; // ✅ returns array of rooms
+    const res = await api.get("/myrooms"); // Cleaner!
+    return res.data.data.rooms;
   } catch (error) {
     console.error("Error fetching user rooms:", error.response?.data || error.message);
     throw error;
@@ -76,46 +80,26 @@ export const getUserRooms = async () => {
 // Ask a question in a room
 export const askRoomQuestion = async (roomId, query) => {
   try {
-    const token = localStorage.getItem('token');
-    const response = await axios.post(
-      `/rooms/${roomId}`,
-      { query },
-      token ? { headers: { Authorization: `Bearer ${token}` } } : undefined
-    );
-    return response.data; // expected shape: { status, message }
+    const response = await api.post(`/rooms/${roomId}`, { query });
+    return response.data;
   } catch (error) {
     console.error('Error asking question:', error);
     throw error;
   }
 };
 
-
 export const createRoom = async (formData) => {
-  const token = localStorage.getItem("token");
-
-  const res = await axios.post("/myrooms", formData, {
+  // For FormData, axios usually detects Content-Type automatically, 
+  // but we can keep it explicit if you prefer. Auth is handled by interceptor.
+  const res = await api.post("/myrooms", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${token}`,
     },
   });
-
   return res.data;
 }
 
 export const deleteRoom = async (roomId) => {
-  const token = localStorage.getItem("token");
-
-  const res = await axios.delete(
-    `/rooms/${roomId}`, // The URL includes the room's ID
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-
+  const res = await api.delete(`/rooms/${roomId}`);
   return res.data;
 };
-
-
