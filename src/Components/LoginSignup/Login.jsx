@@ -61,16 +61,6 @@ function Login() {
             </div>
           </div>
 
-          <div className="options">
-            <div className="remember">
-              <input type="checkbox" id="remember" />
-              <label htmlFor="remember">Remember me</label>
-            </div>
-            <div className="forgot">
-              <Link to="/forgot-password">Forgot password?</Link>
-            </div>
-          </div>
-
           <button type="submit" className="loginButton">
             Login
           </button>
