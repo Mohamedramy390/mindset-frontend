@@ -5,12 +5,14 @@ import { getUserRooms } from "../../api/apis";
 import Loader from "../Loader/Loader";
 import roomPlaceholder from "../Assets/room-placeholder.png";
 import { Navbar } from "../../nav/Navbar";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 function TeacherDashboard() {
   const [rooms, setRooms] = useState([])
   const [loading, setLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate()
 
   const fetchRooms = async () => {
@@ -32,6 +34,11 @@ function TeacherDashboard() {
     };
     fetchData();
   }, []);
+
+  const filteredRooms = rooms.filter((room) =>
+    room.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    room.topic.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
 
   if (loading) return <Loader />;
@@ -80,20 +87,31 @@ function TeacherDashboard() {
       <div className="teacher-content">
         <div className="teacher-header">
           <h3>My Rooms</h3>
-          <button onClick={() => navigate('/createRoom')} className="teacher-create-btn"><Link to="/CreateRoom">+ Create New Room</Link></button>
+          <button onClick={() => navigate('/createRoom')} className="teacher-create-btn">+ Create New Room</button>
         </div>
 
+        {/* Search Bar */}
+        <SearchBar
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          placeholder="Search my rooms..."
+        />
+
         <div className="teacher-rooms">
-          {rooms.map((room, index) => (
-            <div className="teacher-room-card" key={index}>
-              <img src={roomPlaceholder} alt="Room" className="teacher-room-image" />
-              <div className="teacher-room-info">
-                <h4>{room.name}</h4>
-                <p className="teacher-code">{room.topic}</p>
-                <button onClick={() => navigate(`/rooms/${room._id}/teacher`)} className="teacher-analytics-btn">View Analytics</button>
+          {filteredRooms.length > 0 ? (
+            filteredRooms.map((room, index) => (
+              <div className="teacher-room-card" key={index}>
+                <img src={roomPlaceholder} alt="Room" className="teacher-room-image" />
+                <div className="teacher-room-info">
+                  <h4>{room.name}</h4>
+                  <p className="teacher-code">{room.topic}</p>
+                  <button onClick={() => navigate(`/rooms/${room._id}/teacher`)} className="teacher-analytics-btn">View Analytics</button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p style={{ color: '#555', fontSize: '1.1rem' }}>No rooms found matching "{searchQuery}"</p>
+          )}
         </div>
       </div>
     </div>

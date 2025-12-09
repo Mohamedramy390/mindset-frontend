@@ -64,19 +64,7 @@
   margin-bottom: 20px;
 }
 
-/* ===== Search Bar ===== */
-.search-bar {
-  margin-bottom: 30px;
-}
 
-.search-bar input {
-  width: 100%;
-  max-width: 500px;
-  padding: 10px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 1rem;
-}
 
 /* ===== Rooms Grid ===== */
 .rooms-grid {
@@ -211,7 +199,5 @@
     padding: 20px;
   }
 
-  .search-bar input {
-    width: 100%;
-  }
+
 }
