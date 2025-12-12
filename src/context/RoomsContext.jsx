@@ -46,6 +46,7 @@ export const RoomsProvider = ({ children }) => {
     try {
       await enrollRoom(roomId);
       setEnrolledRooms((prev) => [...prev, roomId]);
+      alert("Enrolled successfully, Navigate to my rooms to join");
     } catch (err) {
       console.error("Enroll failed", err);
     }

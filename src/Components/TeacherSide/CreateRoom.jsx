@@ -8,7 +8,7 @@ const CreateRoom = () => {
   const [topic, setTopic] = useState('');
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false)
-  const [, setError] = useState('')
+  const [error, setError] = useState('')
   const navigate = useNavigate()
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -41,6 +41,8 @@ const CreateRoom = () => {
         <h2>Create a New Room</h2>
         <p className="subtitle">Fill in the details below to create a new virtual classroom.</p>
 
+        {error && <div className="error-message">{error}</div>}
+
         <form onSubmit={handleSubmit}>
           <label>Room Name</label>
           <input
@@ -66,7 +68,7 @@ const CreateRoom = () => {
               type="file"
               id="fileUpload"
               onChange={handleFileChange}
-              accept=".png,.jpg,.jpeg,.pdf"
+              accept=".pdf"
             />
             <label htmlFor="fileUpload" className="upload-label">
               {file ? (
@@ -74,7 +76,7 @@ const CreateRoom = () => {
               ) : (
                 <>
                   <strong>Upload a file</strong> or drag and drop
-                  <div className="upload-hint">PNG, JPG, PDF up to 10MB</div>
+                  <div className="upload-hint">PDF up to 10MB</div>
                 </>
               )}
             </label>

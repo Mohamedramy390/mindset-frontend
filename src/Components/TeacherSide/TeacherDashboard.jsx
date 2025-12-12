@@ -19,7 +19,6 @@ function TeacherDashboard() {
     try {
       setLoading(true)
       const roomsData = await getUserRooms()
-      console.log(roomsData)
       setRooms(roomsData);
     } catch (err) {
       console.error("Failed to load rooms", err);

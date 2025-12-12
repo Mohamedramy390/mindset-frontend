@@ -3,39 +3,124 @@
   font-family: "Segoe UI", sans-serif;
   background-color: #f9fafc;
   color: #333;
-  /* Make the page take the full viewport height */
-  height: 100vh; 
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* === Navbar, Main, Resources (Removed) === */
-/* All styles for .room-navbar, .room-main, .room-resources, 
-   .room-resource-grid, and .resource-card are removed 
-   as the elements are no longer in the JSX. */
+/* === Main Layout Container === */
+.room-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  /* Wide layout */
+  margin: 0 auto;
+  gap: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+}
 
-/* === Chatbot Section (Modified for Full Page) === */
+/* === PDF Section === */
+.room-pdf-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* Ensure it takes full height of container */
+}
+
+.pdf-viewer-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  /* Match Chatbot shadow */
+}
+
+.pdf-input-bar {
+  display: flex;
+  padding: 12px;
+  background: #f1f2f6;
+  border-bottom: 1px solid #e0e0e0;
+  gap: 10px;
+}
+
+.pdf-input-bar input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.pdf-input-bar input:focus {
+  border-color: #2563eb;
+}
+
+.pdf-input-bar button {
+  padding: 8px 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pdf-input-bar button:hover {
+  background: #1d4ed8;
+}
+
+.pdf-display-area {
+  flex: 1;
+  /* Fills remaining vertical space */
+  position: relative;
+  background: #e5e7eb;
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.pdf-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Simple lines for graph effect using pseudo-elements could be complex, 
+   keeping it simple as dots for now to match the general feel */
+
+
+/* === Chatbot Section (Modified) === */
 .room-chatbot {
   background: white;
-  /* Removed border-radius and shadow for a cleaner full-page look */
   padding: 24px;
   display: flex;
   flex-direction: column;
-  /* This makes the chatbot container fill the entire .room-page */
-  flex: 1; 
-  /* Ensure padding doesn't cause overflow */
-  box-sizing: border-box; 
-  /* Set a max-width and center it for better readability on wide screens */
-  max-width: 900px;
+  flex: 1;
+  /* Fill the other half */
+  box-sizing: border-box;
   width: 100%;
-  margin: 0 auto; /* Centers the container */
-  /* We can add back some subtle styling if desired */
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  /* Give it some vertical margin if the page is taller than the vh */
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  height: 96vh; /* Adjust height to account for margins */
+  height: 100%;
 }
 
 .room-chatbot h3 {
@@ -43,14 +128,11 @@
   font-weight: 600;
   color: #222;
   margin-bottom: 16px;
-  text-align: center; /* Center the title */
+  text-align: center;
 }
 
 /* Chat Window */
 .room-chat-window {
-  /* This is the key change:
-     flex: 1 makes the window expand to fill the available space 
-     in the .room-chatbot container. */
   flex: 1;
   overflow-y: auto;
   background: #f5f6fa;
@@ -61,8 +143,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* This max-height is REMOVED to allow the window to fill the page */
-  /* max-height: 400px; */ 
 }
 
 .chat-message {
@@ -129,4 +209,74 @@
 .room-chat-input button:disabled {
   background: #9ca3af;
   cursor: not-allowed;
+}
+
+/* Responsive adjustment */
+/* Unused styles removed (pdf-input-bar) */
+
+/* Responsive adjustment */
+@media (max-width: 900px) {
+  .room-page {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .room-container {
+    flex-direction: column;
+    height: auto;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  /* PDF Section on Mobile */
+  .room-pdf-section {
+    width: 100%;
+    /* Key change: Explicitly set height based on screen size as requested */
+    height: 60vh;
+    /* Give PDF a fixed height on mobile so it's usable */
+    min-height: 400px;
+  }
+
+  .pdf-viewer-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pdf-display-area {
+    height: 100%;
+    /* Ensure this fills the container */
+  }
+
+  /* Chatbot Section on Mobile */
+  .room-chatbot {
+    width: 100%;
+    height: 80vh;
+    /* Taller chat interface on mobile */
+    min-height: 500px;
+  }
+  .pdf-frame {
+    height: 80vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .room-container {
+    padding: 10px;
+  }
+
+  .room-pdf-section {
+    /* Smaller height for very small screens if needed */
+    height: 50vh;
+    min-height: 300px;
+  }
+
+  .room-chatbot {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .pdf-frame {
+    height: 60vh !important;
+  }
 }
