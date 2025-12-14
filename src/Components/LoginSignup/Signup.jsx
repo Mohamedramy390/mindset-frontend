@@ -115,7 +115,7 @@ const Signup = () => {
                         >
                             <option value="" disabled hidden>Select Role</option>
                             <option value="STUDENT">Student</option>
-                            <option value="Teacher">Teacher</option>
+                            <option value="TEACHER">Teacher</option>
                         </select>
                     </div>
 
