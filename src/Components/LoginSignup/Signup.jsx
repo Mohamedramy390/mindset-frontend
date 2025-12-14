@@ -114,8 +114,8 @@ const Signup = () => {
                             required
                         >
                             <option value="" disabled hidden>Select Role</option>
-                            <option value="STUDENT">Student</option>
-                            <option value="TEACHER">Teacher</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
                         </select>
                     </div>
 
