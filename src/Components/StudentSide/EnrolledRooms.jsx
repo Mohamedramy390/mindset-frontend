@@ -26,7 +26,7 @@ export default function EnrolledRooms() {
   if (myRooms.length === 0) {
     return (
       <div className="rooms-page">
-        <Navbar role="Student" />
+        <Navbar role="student" />
         <main className="rooms-container">
           <h1 className="rooms-title">My Rooms</h1>
 
@@ -45,7 +45,7 @@ export default function EnrolledRooms() {
 
   return (
     <div className="rooms-page">
-      <Navbar role="Student" />
+      <Navbar role="student" />
       <main className="rooms-container">
         <h1 className="rooms-title">My Rooms</h1>
 

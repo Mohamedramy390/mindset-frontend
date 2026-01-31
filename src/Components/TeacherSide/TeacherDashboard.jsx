@@ -45,7 +45,7 @@ function TeacherDashboard() {
   if (!loading && rooms.length === 0) {
     return (
       <div className="teacher-dashboard">
-        <Navbar role="Teacher" />
+        <Navbar role="teacher" />
         <div className="teacher-content">
           <div className="teacher-header">
             <h3>My Rooms</h3>
@@ -80,7 +80,7 @@ function TeacherDashboard() {
   return (
     <div className="teacher-dashboard">
       {/* Sticky Navbar */}
-      <Navbar role="Teacher" />
+      <Navbar role="teacher" />
 
       {/* Content */}
       <div className="teacher-content">

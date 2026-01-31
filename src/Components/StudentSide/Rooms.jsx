@@ -24,7 +24,7 @@ const Rooms = () => {
 
   return (
     <div className="rooms-page">
-      <Navbar role="Student" />
+      <Navbar role="student" />
       {/* Main content */}
       <main className="rooms-container">
         <h1 className="rooms-title">Rooms</h1>

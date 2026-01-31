@@ -20,7 +20,8 @@ export const Navbar = ({role}) => {
 
     return (
         <header className="room-navbar">
-            <h1 className="room-logo">{role} Dashboard</h1>
+            {role === "student" && <Link to={'/rooms'} className="room-logo">Student Dashboard</Link>}
+            {role === "teacher" && <Link to={'/dashboard'} className="room-logo">Teacher Dashboard</Link>}
 
             {/* Hamburger Icon (Visible only on mobile) */}
             <div className="hamburger" onClick={toggleMenu}>
@@ -31,8 +32,8 @@ export const Navbar = ({role}) => {
 
             {/* Menu Links */}
             <nav className={`room-menu ${isOpen ? "active" : ""}`}>
-                {role === "Student" && <Link to={'/rooms'} onClick={() => setIsOpen(false)}>All Rooms</Link>}
-                {role === "Student" && <Link to={'/my-rooms'} onClick={() => setIsOpen(false)}>My Rooms</Link>}
+                {role === "student" && <Link to={'/rooms'} onClick={() => setIsOpen(false)}>All Rooms</Link>}
+                {role === "student" && <Link to={'/my-rooms'} onClick={() => setIsOpen(false)}>My Rooms</Link>}
                 <Link to={'/how-to-use'} onClick={() => setIsOpen(false)}>How to Use</Link>
                 <Link to={'/feedback'} onClick={() => setIsOpen(false)}>Feedback</Link>
                 
