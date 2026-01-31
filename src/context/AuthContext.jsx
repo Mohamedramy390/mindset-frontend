@@ -50,7 +50,7 @@ export function AuthProvider({ children }) {
   };
 
   // Configure global Base URL (Keep this or use the api instance method)
-  axios.defaults.baseURL = 'https://mindset-backend-production.up.railway.app/api';
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
 
   const login = async (email, password) => {
     try {

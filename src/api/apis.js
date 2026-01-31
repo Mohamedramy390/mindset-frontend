@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 1. Configure the base URL
 const api = axios.create({
-  baseURL: 'https://mindset-backend-production.up.railway.app/api',
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:4000/api',
 });
 
 // 2. ADD THIS: Automatically add the token to every request
