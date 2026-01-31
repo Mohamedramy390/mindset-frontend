@@ -27,6 +27,7 @@ export const PublicNavbar = () => {
             {/* Menu Links */}
             <nav className={`public-navbar-menu ${isOpen ? "active" : ""}`}>
                 <Link to="/how-to-use" onClick={closeMenu}>How to Use</Link>
+                <Link to="/feedback" onClick={closeMenu}>Feedback</Link>
                 <Link to="/login" className="btn-login" onClick={closeMenu}>Login</Link>
                 <Link to="/" className="btn-signup" onClick={closeMenu}>Sign Up</Link>
             </nav>

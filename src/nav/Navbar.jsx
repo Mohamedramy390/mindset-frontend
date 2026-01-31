@@ -34,6 +34,7 @@ export const Navbar = ({role}) => {
                 {role === "Student" && <Link to={'/rooms'} onClick={() => setIsOpen(false)}>All Rooms</Link>}
                 {role === "Student" && <Link to={'/my-rooms'} onClick={() => setIsOpen(false)}>My Rooms</Link>}
                 <Link to={'/how-to-use'} onClick={() => setIsOpen(false)}>How to Use</Link>
+                <Link to={'/feedback'} onClick={() => setIsOpen(false)}>Feedback</Link>
                 
                 {/* Changed Logout to use a click handler */}
                 <a href="/login" onClick={handleLogout} className="logout-btn">Logout</a>

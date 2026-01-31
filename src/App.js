@@ -9,6 +9,7 @@ import StudentRoom from "./Components/StudentSide/StudentRoom";
 import MyRooms from "./Components/MyRooms";
 import { TeacherRoom } from "./Components/TeacherSide/TeacherRoom";
 import HowToUse from "./Components/Common/HowToUse";
+import Feedback from "./Components/Common/Feedback";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/how-to-use" element={<HowToUse />} />
+        <Route path="/feedback" element={<Feedback />} />
         
         {/* Teacher-Only Routes */}
         <Route 
