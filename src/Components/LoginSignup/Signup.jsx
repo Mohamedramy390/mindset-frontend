@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Signup.css'
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
+import { PublicNavbar } from '../../nav/PublicNavbar';
 
 const Signup = () => {
     const [form, setForm] = useState({
@@ -47,7 +48,9 @@ const Signup = () => {
     };
 
     return (
-        <div className="container">
+        <>
+            <PublicNavbar />
+            <div className="container">
             <div className="page">
 
                 {/* Header */}
@@ -134,7 +137,8 @@ const Signup = () => {
                 {/* FORM ENDS HERE */}
 
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

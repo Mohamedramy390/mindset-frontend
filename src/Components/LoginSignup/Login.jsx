@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useAuth } from "../../context/AuthContext";
+import { PublicNavbar } from "../../nav/PublicNavbar";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,9 @@ function Login() {
   };
 
   return (
-    <div className="container">
+    <>
+      <PublicNavbar />
+      <div className="container">
       <div className="page">
         <div className="header">
           <div className="login_title">Login</div>
@@ -67,7 +70,8 @@ function Login() {
         </form>
         {/* FORM END */}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

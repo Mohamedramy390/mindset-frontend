@@ -1,0 +1,199 @@
+/* HowToUse.css */
+.htu-container {
+  min-height: 100vh;
+  background: #0f172a; /* Slate 900 */
+  color: #f8fafc;
+  font-family: "Inter", sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Navbar Placeholder Fix */
+.htu-nav-spacer {
+  height: 80px;
+}
+
+/* Hero Section */
+.htu-hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+  position: relative;
+}
+
+.htu-hero::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(139, 92, 246, 0.15) 0%,
+    transparent 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.htu-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #a78bfa 0%, #2dd4bf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.htu-subtitle {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Containers */
+.htu-section {
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.htu-section-title {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 40px;
+  border-left: 4px solid #8b5cf6;
+  padding-left: 15px;
+}
+
+/* Grid Layout for Cards */
+.htu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Feature Cards (Glassmorphism) */
+.htu-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 16px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.htu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.htu-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 15px;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 12px;
+  color: #a78bfa;
+}
+
+.htu-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #f1f5f9;
+}
+
+.htu-card p {
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* Role Badges */
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.badge.student {
+  background: rgba(45, 212, 191, 0.1);
+  color: #2dd4bf;
+  border: 1px solid rgba(45, 212, 191, 0.2);
+}
+
+.badge.teacher {
+  background: rgba(244, 63, 94, 0.1);
+  color: #f43f5e;
+  border: 1px solid rgba(244, 63, 94, 0.2);
+}
+
+.badge.ai {
+  background: rgba(139, 92, 246, 0.1);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* Step Numbers */
+.step-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 1;
+}
+
+/* Call to Action */
+.htu-cta {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(139, 92, 246, 0.05) 100%
+  );
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  color: white;
+  padding: 15px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: filter 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .htu-title {
+    font-size: 2.5rem;
+  }
+}

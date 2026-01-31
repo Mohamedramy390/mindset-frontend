@@ -24,7 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #eee;
-  padding: 20px;
+  padding: 100px 20px 20px 20px; /* Top padding for navbar, rest for spacing */
   margin: 0;
 }
 
